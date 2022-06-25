@@ -65,6 +65,9 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public User() {
+		
+	}
 	String username;
 	String password;
 	String email;

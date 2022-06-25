@@ -1,6 +1,11 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.CompanyAdmin;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
@@ -28,4 +34,14 @@ public class UserController {
 	public User entterUsers(@RequestBody User user) {
 		return userService.saveUser(user);
 	}
+	@GetMapping("/getUsers")
+	public ResponseEntity<List<User>> getUsers() {
+		return ResponseEntity.ok().body(userService.GetUsers());
+	}
+	
+	@PostMapping("/enterCompanyAdmin")
+	public CompanyAdmin entterUsers(@RequestBody CompanyAdmin admin) {
+		return userService.saveCompanyAdmin(admin);
+	}
+	
 }
