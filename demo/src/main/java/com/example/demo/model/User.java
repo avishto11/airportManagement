@@ -16,7 +16,6 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.mobile = mobile;
-		this.address = address;
 		this.name = name;
 	}
 	@Id
@@ -53,12 +52,7 @@ public class User {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	public String getName() {
 		return name;
 	}
@@ -72,7 +66,6 @@ public class User {
 	String password;
 	String email;
 	String mobile;
-	String address;
 	String name;
 
 }
