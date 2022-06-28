@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.AirportAdmin;
 import com.example.demo.model.CompanyAdmin;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
@@ -42,6 +43,13 @@ public class UserController {
 		System.out.println("Username::=========================="+username);
 		return userService.getByCompanyAdminName(username);
 	}
+	@GetMapping("/getAirportAdmin/{username}")
+	public AirportAdmin getByAirportAdminName(@PathVariable("username")String username) {
+		System.out.println("Username::=========================="+username);
+		return userService.getByAirportAdminName(username);
+	}
+	
+	
 	
 	@PostMapping("/enterUsers")
 	public String entterUsers(@RequestBody User user) {
@@ -60,6 +68,16 @@ public class UserController {
 	@GetMapping("/getCompanyAdmins")
 	public ResponseEntity<List<CompanyAdmin>> getCompanyAdmins() {
 		return ResponseEntity.ok().body(userService.GetCompanyAdmins());
+	}
+	
+	@PostMapping("/enterAirportAdmins")
+	public String entterUsers(@RequestBody AirportAdmin aadmin) {
+		return userService.saveAirportAdmin(aadmin);
+	}
+	
+	@GetMapping("/getAirportAdmins")
+	public ResponseEntity<List<AirportAdmin>> getAirportAdmins() {
+		return ResponseEntity.ok().body(userService.GetAirportAdmins());
 	}
 	
 }
