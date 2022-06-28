@@ -37,6 +37,11 @@ public class UserController {
 		System.out.println("Username::=========================="+username);
 		return userService.getUserByUsername(username);
 	}
+	@GetMapping("/getCompanyAdmin/{username}")
+	public CompanyAdmin getByCompanyAdminName(@PathVariable("username")String username) {
+		System.out.println("Username::=========================="+username);
+		return userService.getByCompanyAdminName(username);
+	}
 	
 	@PostMapping("/enterUsers")
 	public String entterUsers(@RequestBody User user) {
@@ -47,9 +52,14 @@ public class UserController {
 		return ResponseEntity.ok().body(userService.GetUsers());
 	}
 	
-	@PostMapping("/enterCompanyAdmin")
-	public CompanyAdmin entterUsers(@RequestBody CompanyAdmin admin) {
+	@PostMapping("/enterCompanyAdmins")
+	public String entterUsers(@RequestBody CompanyAdmin admin) {
 		return userService.saveCompanyAdmin(admin);
+	}
+	
+	@GetMapping("/getCompanyAdmins")
+	public ResponseEntity<List<CompanyAdmin>> getCompanyAdmins() {
+		return ResponseEntity.ok().body(userService.GetCompanyAdmins());
 	}
 	
 }

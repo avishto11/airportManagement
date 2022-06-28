@@ -9,9 +9,11 @@ public interface UserService {
 
 	String saveUser(User user);
 	List<User> GetUsers();
+	List<CompanyAdmin> GetCompanyAdmins();
 	User getUserByUsername(String username);
-	CompanyAdmin saveCompanyAdmin(CompanyAdmin admin);
 	
+	String saveCompanyAdmin(CompanyAdmin companyAdmin);
+	
+	CompanyAdmin getByCompanyAdminName(String username);
 		
-	
 }
