@@ -25,9 +25,16 @@ public class UserserviceImpl implements UserService{
 	private CompanyAdminrepo companyAdminRepo;
 	
 	@Override
-	public User saveUser(User user) {
+	public String saveUser(User user) {
 		// TODO Auto-generated method stub
-		return userRepo.save(user);
+		User userCheck = null;
+		userCheck = userRepo.getByUsername(user.getUsername());
+		if(userCheck != null) {
+			return "User ALready Exists";
+		}else {
+		 userRepo.save(user);
+		}
+		return "User addition Successfull";
 	}
 
 	@Override
@@ -40,6 +47,12 @@ public class UserserviceImpl implements UserService{
 	public CompanyAdmin saveCompanyAdmin(CompanyAdmin admin) {
 		// TODO Auto-generated method stub
 		return companyAdminRepo.save(admin);
+	}
+
+	@Override
+	public User getUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return userRepo.getByUsername(username);
 	}
 
 }

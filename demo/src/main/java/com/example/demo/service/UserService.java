@@ -7,9 +7,9 @@ import com.example.demo.model.User;
 
 public interface UserService {
 
-	User saveUser(User user);
+	String saveUser(User user);
 	List<User> GetUsers();
-	
+	User getUserByUsername(String username);
 	CompanyAdmin saveCompanyAdmin(CompanyAdmin admin);
 	
 		

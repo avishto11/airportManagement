@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +31,15 @@ public class UserController {
 		return "connected";
 	}
 	
+	
+	@GetMapping("/getUser/{username}")
+	public User getUserByUsername(@PathVariable("username")String username) {
+		System.out.println("Username::=========================="+username);
+		return userService.getUserByUsername(username);
+	}
+	
 	@PostMapping("/enterUsers")
-	public User entterUsers(@RequestBody User user) {
+	public String entterUsers(@RequestBody User user) {
 		return userService.saveUser(user);
 	}
 	@GetMapping("/getUsers")
