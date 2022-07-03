@@ -106,4 +106,11 @@ public class UserserviceImpl implements UserService{
 		return airportAdminRepo.getByUsername(username);
 	}
 
+	@Override
+	public String deleteCompanyAdmin(String username) {
+		// TODO Auto-generated method stub
+		companyAdminRepo.deleteByUsername(username);
+		return "Success";
+	}
+
 }

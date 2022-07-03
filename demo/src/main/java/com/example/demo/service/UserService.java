@@ -19,6 +19,6 @@ public interface UserService {
 	List<AirportAdmin> GetAirportAdmins();
 	AirportAdmin getByAirportAdminName(String username );
 	String saveAirportAdmin(AirportAdmin aadmin);
-	
+	String deleteCompanyAdmin(String username);
 		
 }
