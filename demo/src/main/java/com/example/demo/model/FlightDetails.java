@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,11 +18,11 @@ public class FlightDetails {
 			  private String flightname;
 			  private String fromname;
 			  private String toname ;
-			  private Date timedep; 
-			  private Date timearrive; 
+			  private LocalDateTime timedep; 
+			  private LocalDateTime  timearrive; 
 			  private String flightday;
-			public FlightDetails(int id, String flightname, String fromname, String toname, Date timedep,
-					Date timearrive, String flightday) {
+			public FlightDetails(int id, String flightname, String fromname, String toname,  LocalDateTime timedep,
+					 LocalDateTime timearrive, String flightday) {
 				super();
 				this.id = id;
 				this.flightname = flightname;
@@ -55,16 +56,16 @@ public class FlightDetails {
 			public void setToname(String toname) {
 				this.toname = toname;
 			}
-			public Date getTimedep() {
+			public  LocalDateTime getTimedep() {
 				return timedep;
 			}
-			public void setTimedep(Date timedep) {
+			public void setTimedep( LocalDateTime timedep) {
 				this.timedep = timedep;
 			}
-			public Date getTimearrive() {
+			public LocalDateTime getTimearrive() {
 				return timearrive;
 			}
-			public void setTimearrive(Date timearrive) {
+			public void setTimearrive( LocalDateTime timearrive) {
 				this.timearrive = timearrive;
 			}
 			public String getFlightday() {
