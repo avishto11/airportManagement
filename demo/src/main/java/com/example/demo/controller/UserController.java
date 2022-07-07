@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.AirportAdmin;
 import com.example.demo.model.CompanyAdmin;
+import com.example.demo.model.LoginRequest;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 
@@ -82,5 +83,25 @@ public class UserController {
 	public String deleteCompanyAdmin(@PathVariable("username") String username) {
 		return userService.deleteCompanyAdmin(username);
 	}
+	@PostMapping("/userLogin")
+	public String userLogin(@RequestBody LoginRequest loginRequest) {
+		
+		return userService.UserLogin(loginRequest);
+	}
+	
+	@PostMapping("/companyAdminLogin")
+	public String companyAdminLogin(@RequestBody LoginRequest loginRequest) {
+		
+		return userService.CompanyAdminLogin(loginRequest);
+	}
+	
+	@PostMapping("/airportAdminLogin")
+	public String airportAdminLogin(@RequestBody LoginRequest loginRequest) {
+		
+		return userService.AirportAdminLogin(loginRequest);
+	}
+	
+	
+	
 	
 }

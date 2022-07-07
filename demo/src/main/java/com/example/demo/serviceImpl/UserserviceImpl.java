@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.AirportAdmin;
 import com.example.demo.model.CompanyAdmin;
+import com.example.demo.model.LoginRequest;
 import com.example.demo.model.User;
 import com.example.demo.repo.AirportAdminRepo;
 import com.example.demo.repo.CompanyAdminrepo;
@@ -111,6 +112,65 @@ public class UserserviceImpl implements UserService{
 		// TODO Auto-generated method stub
 		companyAdminRepo.deleteByUsername(username);
 		return "Success";
+	}
+
+	@Override
+	public String UserLogin(LoginRequest loginRequest) {
+		// TODO Auto-generated method stub
+		String returnVal = "";
+		User user = null;
+		user = userRepo.getByUsername(loginRequest.getUsername());
+		if(user == null) {
+			returnVal =  "User does not exist";
+		}
+		else {
+			if(user.getPassword().equals(loginRequest.getPassword())) {
+				returnVal =  "success";
+			}else {
+				returnVal = "User password Wrong";
+			}
+		}
+		
+		return returnVal;
+	}
+
+	@Override
+	public String CompanyAdminLogin(LoginRequest loginRequest) {
+		// TODO Auto-generated method stub
+		String returnVal = "";
+		CompanyAdmin admin = null;
+		admin = companyAdminRepo.getByUsername(loginRequest.getUsername());
+		if(admin == null) {
+			returnVal =  "User does not exist";
+		}
+		else {
+			if(admin.getPassword().equals(loginRequest.getPassword())) {
+				returnVal =  "success";
+			}else {
+				returnVal = "User password Wrong";
+			}
+		}
+		return returnVal;
+		
+	}
+
+	@Override
+	public String AirportAdminLogin(LoginRequest loginRequest) {
+		// TODO Auto-generated method stub
+		String returnVal = "";
+		AirportAdmin aadmin = null;
+		aadmin = airportAdminRepo.getByUsername(loginRequest.getUsername());
+		if(aadmin == null) {
+			returnVal =  "Admin does not exist";
+		}
+		else {
+			if(aadmin.getPassword().equals(loginRequest.getPassword())) {
+				returnVal =  "success";
+			}else {
+				returnVal = "Admin password Wrong";
+			}
+		}
+		return returnVal;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.model.AirportAdmin;
 import com.example.demo.model.CompanyAdmin;
+import com.example.demo.model.LoginRequest;
 import com.example.demo.model.User;
 
 public interface UserService {
@@ -20,5 +21,10 @@ public interface UserService {
 	AirportAdmin getByAirportAdminName(String username );
 	String saveAirportAdmin(AirportAdmin aadmin);
 	String deleteCompanyAdmin(String username);
+	
+	String UserLogin(LoginRequest loginRequest);
+	String CompanyAdminLogin(LoginRequest loginRequest);
+	String AirportAdminLogin(LoginRequest loginRequest);
+	
 		
 }
