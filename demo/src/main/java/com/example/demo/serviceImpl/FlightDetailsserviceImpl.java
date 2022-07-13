@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.FlightBooked;
 import com.example.demo.model.FlightDetails;
+import com.example.demo.repo.FlightBookRepo;
 import com.example.demo.repo.FlightDetailsRepo;
 import com.example.demo.service.FlightDetailsService;
 
@@ -14,6 +16,9 @@ public class FlightDetailsserviceImpl implements FlightDetailsService  {
 
 	@Autowired
 	private FlightDetailsRepo flightDetailsRepo;
+	
+	@Autowired
+	private FlightBookRepo flightDeBookRepo;
 	
 	@Override
 	public String saveFlight(FlightDetails flight) {
@@ -33,6 +38,26 @@ public class FlightDetailsserviceImpl implements FlightDetailsService  {
 		// TODO Auto-generated method stub
 		flightDetailsRepo.deleteById(id);
 		return "Success";
+	}
+
+	@Override
+	public List<FlightDetails> flightSeach(String toname, String fromname) {
+		// TODO Auto-generated method stub
+		
+		return flightDetailsRepo.searchFlight(toname, fromname);
+	}
+
+	@Override
+	public String FlightBooked(FlightBooked flightBooked) {
+		// TODO Auto-generated method stub
+		 flightDeBookRepo.save(flightBooked);
+		 return "success";
+	}
+
+	@Override
+	public List<FlightDetails> getFlightBookedUser(String username) {
+		// TODO Auto-generated method stub
+		return flightDetailsRepo.getUserFlightDetails(username);
 	}
 
 }
